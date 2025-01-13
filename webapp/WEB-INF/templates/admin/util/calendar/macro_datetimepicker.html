@@ -10,7 +10,7 @@
 	var ${idField}_fp;
 $( function() {
 	<@getDateFormat format=format showFormat=showFormat  />
-	${idField}_fp = $('#${idField}').flatpickr( {enableTime: false, altInput: true, altFormat: showFormat, dateFormat: dtFormat, "locale": "<@getLanguageInLocale language=language />"<#if defaultDate?has_content><#if defaultDate?is_date >, defaultDate : "${defaultDate?iso_local_nz}"<#else>, defaultDate : "${defaultDate?date?iso_local_nz}"</#if></#if><#if minDate?has_content><#if minDate?is_date >, minDate : "${minDate?iso_local_nz}"<#else>, minDate : "${minDate?date?iso_local_nz}"</#if></#if><#if maxDate?has_content><#if maxDate?is_date >, maxDate : "${maxDate?iso_local_nz}"<#else>, maxDate : "${maxDate?date?iso_local_nz}"</#if></#if>, ${setFlatPickerOptions( dtOptions )} });
+	${idField}_fp = $('#${idField}').flatpickr( {enableTime: false, altInput: true, altFormat: showFormat, dateFormat: dtFormat, "locale": "<@getLanguageInLocale language=language />"<#if defaultDate?has_content><#if defaultDate?is_date >, defaultDate : new Date("${defaultDate?iso_local_nz}")<#else>, defaultDate : new Date("${defaultDate?date?iso_local_nz}")</#if></#if><#if minDate?has_content><#if minDate?is_date >, minDate : new Date("${minDate?iso_local_nz}")<#else>, minDate : new Date("${minDate?date?iso_local_nz}")</#if></#if><#if maxDate?has_content><#if maxDate?is_date >, maxDate : new Date("${maxDate?iso_local_nz}")<#else>, maxDate : new Date("${maxDate?date?iso_local_nz}")</#if></#if>, ${setFlatPickerOptions( dtOptions )} });
 
 	if ($('#${idField}').prop('required')) {
 		// Remove the readonly parameter on the date field, so the required attribute is taken into account when the form is submitted
